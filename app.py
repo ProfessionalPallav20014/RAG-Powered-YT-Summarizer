@@ -8,7 +8,11 @@ import google.generativeai as genai
 from youtube_transcript_api import YouTubeTranscriptApi
 
 load_dotenv(dotenv_path="Env.env")
-genai.configure(api_key=os.getenv("MY_GEMINI_API_KEY"))
+
+# create a .env file and store your api into it
+# or you can simply use this
+# genai.configure(api_key="enteryourapikey")
+genai.configure(api_key=os.getenv("MY_GEMINI_KEY"))
 
 prompt="""
     You are a precise video assistant. Use the provided transcript to fulfill the user's request.
