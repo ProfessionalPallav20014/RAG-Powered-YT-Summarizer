@@ -7,7 +7,7 @@ import google.generativeai as genai
 
 from youtube_transcript_api import YouTubeTranscriptApi
 
-load_dotenv(dotenv_path="Env.env")
+load_dotenv(dotenv_path="myEnv.env")
 
 # create a .env file and store your api into it
 # or you can simply use this
@@ -21,7 +21,7 @@ prompt="""
     {transcript_text}
     
     RULES:
-    1. If the user asks to "summarize", provide a concise summary of the key points.
+    1. If the user asks to "summarize", provide a brief with a heading and some of the most important key points.
     2. If the user asks a specific question, answer it directly using ONLY the transcript and your UNDERSTANDING based on the video.
     3. Do NOT use any introductory fillers like "Sure," "Based on the video," or "Here is your answer."
     4. If the answer is not related to the transcript or video, state: "The video does not mention this." and if it's related then answer the question with the best possible conclusions or answer based on the understanding of the video and try not to go off topic.
