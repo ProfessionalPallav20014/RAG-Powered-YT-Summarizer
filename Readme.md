@@ -81,6 +81,18 @@ ollama run deepseek-r1:8b
 
 - `python app.py`
 
+## 🚀 App Demo
+
+Experience the tool in action! You can try the bilingual summarizer and RAG interface via the deployed link below:
+
+### ❗CAUTION
+
+**Technical Note on Deployment:** Due to high request volumes, YouTube may occasionally block Cloud-based requests (Rate Limiting). If the demo link fails to fetch a transcript, it is likely a temporary IP block from YouTube. For a guaranteed experience, please follow the **Local Setup** instructions below.
+
+**🔗 [Live Demo Link](https://rag-powered-yt-summarizer-vkhq8jr2sr6dde6xmjcfky.streamlit.app/)**
+
+> **Note:** The local RAG features (Ollama) are only available when running the project on your machine. The deployed version uses Cloud APIs to demonstrate the bilingual summarization capabilities.
+
 ## ⚠️ Troubleshooting
 
 - **Terminal Issues:** If `conda` is not recognized in VS Code, ensure your Python Path is set correctly or stick to the Anaconda Prompt.
