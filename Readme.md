@@ -87,7 +87,7 @@ Experience the tool in action! You can try the bilingual summarizer and RAG inte
 
 ### ❗CAUTION
 
-**Technical Note on Deployment:** Due to high request volumes, YouTube may occasionally block Cloud-based requests (Rate Limiting). If the demo link fails to fetch a transcript, it is likely a temporary IP block from YouTube. For a guaranteed experience, please follow the **Local Setup** instructions below.
+**Technical Note on Deployment:** Due to high request volumes, YouTube may occasionally block Cloud-based requests (Rate Limiting). If the demo link fails to fetch a transcript, it is likely a temporary IP block from YouTube. For a guaranteed experience, please follow the **Local Setup** instructions.
 
 **🔗 [Live Demo Link](https://rag-powered-yt-summarizer-vkhq8jr2sr6dde6xmjcfky.streamlit.app/)**
 
