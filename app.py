@@ -11,7 +11,8 @@ load_dotenv(dotenv_path="myEnv.env")
 
 # create a .env file and store your api into it
 # or you can simply use this
-# genai.configure(api_key="enteryourapikey")
+# genai.configure(api_key="your-gemini-key")
+
 genai.configure(api_key=os.getenv("MY_GEMINI_KEY"))
 
 prompt="""
@@ -26,29 +27,28 @@ prompt="""
     3. Do NOT use any introductory fillers like "Sure," "Based on the video," or "Here is your answer."
     4. If the answer is not related to the transcript or video, state: "The video does not mention this." and if it's related then answer the question with the best possible conclusions or answer based on the understanding of the video and try not to go off topic.
     5. You can also introduce some possible theories related to the video if you don't find any useful answer from the video which is necessary to answer the question.
+    6. If the user requests a specific language, prioritize providing the answer in that language by first checking if the transcript contains a native version in that language to use as the primary source, and only perform a manual translation if no such direct match is found.
     """
 
 ## getting the transcript data from yt videos
+## Caution: Paste only clean link from youtube
 def extract_transcript_details(youtube_video_url):
     try:
         video_id=youtube_video_url.split("=")[1]
-        
-        yta_class=YouTubeTranscriptApi()
-        # transcript_list=yta_class.list(video_id)
-        transcript_data=yta_class.fetch(video_id, languages=['en','hi'])
+        file_name=f"{video_id}.txt"
+        if os.path.exists(file_name) and os.path.getsize(file_name)>0:
+            with open(file_name,"r", encoding="utf-8") as f:
+                return f.read()
+        else:
+            yta_class=YouTubeTranscriptApi()
+            transcript_data=yta_class.fetch(video_id, languages=['en','hi'])
 
-        # Needs improvement, coming soon!
-        # try:
-        #     transcript_data=yta_class.fetch(video_id)
-        # except:
-        #     transcript_list=yta_class.list(video_id)
-        #     required_transcript=transcript_list.find_transcript(['hi'])
-        #     transcript_data=required_transcript.translate('en')
+            text_list=[snippet.text for snippet in transcript_data]
 
-        text_list=[snippet.text for snippet in transcript_data]
-
-        transcript = " ".join(text_list)
-        return transcript
+            transcript = " ".join(text_list)
+            with open(file_name,"w", encoding="utf-8") as f:
+                f.write(transcript)
+            return transcript
 
     except Exception as e:
         raise e
